@@ -18,23 +18,43 @@ public class CalculaDivisores {
      */
     public static void main(String[] args) {
         Scanner leitor = new Scanner(System.in);
-        int k, result =0;
+        int numero, quant_div =0;
+        int divisores[];
         System.out.println("Informe um número");
-        k = leitor.nextInt();
+        numero = leitor.nextInt();
         
-        result =  n_divisores(k);
+        quant_div =  n_divisores(numero);
         
-        System.out.println("quantidade de divisores = "+result);
+        System.out.println("quantidade de divisores = "+quant_div);
         
+        divisores = divisores(quant_div, numero);
         
+        System.out.println("Os divisores sao:");
+        
+       for(int i =0; i<quant_div;i++){
+           System.out.print(divisores[i]+" ");
+       }
+        System.out.println();
     }
     
     
-    
+    // A funcao calcula a quantidade de  divisores do numero informado incluido 1 e o proprio numero
     public static int n_divisores(int k){
         int cont_div = 0;
         
         for(int i =1; i<=k;i++){
+            if(k%i==0){
+                cont_div +=1;
+            }
+        }
+        return cont_div;
+    }
+    
+    // A funcao calcula o quantidade de divisores excepto o proprio numero
+    public static int n_divisoresIncom(int k){
+        int cont_div = 0;
+        
+        for(int i =1; i<k;i++){
             if(k%i==0){
                 cont_div +=1;
                 if(i==k){
@@ -47,20 +67,24 @@ public class CalculaDivisores {
         return cont_div;
     }
     
-    public static void divisores(int cont_div, int k){
+    // essa funcao retorna os divisores do numero informado incluindo ele mesmo
+    public static int[] divisores(int cont_div, int k){
         int[] divisores = new int[cont_div];
         int j =0;
         for(int i=1; i<=k;i++){
             if(k%i==0){
-                divisores[j]=i; 
+                divisores[j]=i;
+                j+=1;
             }
-             j+=1;
         }
+       /*
+        for(int a = 0; a<cont_div;a++){
+           System.out.print(divisores[a]+" ");
+        }
+        */
+       
+       return divisores;
         
-        System.out.println("divisores");
-        for(int a = 0; a<=cont_div;a++){
-            System.out.print(divisores[a]+" ");
-        }
     }
     
 }
