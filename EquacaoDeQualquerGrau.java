@@ -11,16 +11,14 @@ public class EquacaoDeQualquerGrau{
         int vetor;
         int coificientes[] = new int[grauDaEquacao];
 
-        = valoresDosCoificintes(grauDaEquacao);
-
     }
 
 
-    public static int valoresDosCoificintes(int n){
+    public static int[] coificintes(int n){
 
         Scanner leitor = new Scanner(System.in);
 
-        int vetor_coif[] = new int[n];
+        int[] vetor_coif = new int[n];
         
         System.out.println("Informe a seguir os valores dos coefincinetes\n comecando pelo coinfinciente da variavel de maior expoente ate o termo independente");
         for(int i =0; i<n;i++){
@@ -29,7 +27,7 @@ public class EquacaoDeQualquerGrau{
              vetor_coif[i]=leitor.nextInt();
         }
 
-        return vetor_coif[n];
+        return vetor_coif;
     
     }
 }
